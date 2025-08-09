@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+:root {
+  --background: #e4e5f1;
+  --foreground: #9394a5;
+  --desktop: url("/assets/bg-desktop-light.jpg");
+  --mobile: url("/assets/bg-mobile-light.jpg");
+  --container: white;
+}
+
+body.dark {
+  --background: #161722;
+  --desktop: url("/assets/bg-desktop-dark.jpg");
+  --mobile: url("/assets/bg-mobile-dark.jpg");
+  --container: #25273c;
+}
+
+#root {
+  height: 100%;
+}
+
+.container {
+  background: var(--container);
+  transition:
+    background-color 250ms ease-in-out,
+    color 200ms ease-in-out;
+}
+
+body {
+  height: 100dvh;
+  background-color: var(--background);
+  color: var(--foreground);
+  background-image: var(--desktop);
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  transition:
+    background-color 250ms ease-in-out,
+    color 200ms ease-in-out;
+}
+
+@media (max-width: 768px) {
+  body {
+    background-image: var(--mobile);
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
+}
+
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 25px;
+  height: 25px;
+  border: 1px solid #888;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  outline: none;
+  transition:
+    background-color 0.2s,
+    border-color 0.2s;
+}
+
+input[type="checkbox"]:checked {
+  background: linear-gradient(to bottom, #daadf7, #ade5fc);
+  border-color: transparent;
+}
+
+input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%) rotate(45deg);
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+}
